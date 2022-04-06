@@ -3,13 +3,13 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: "./src/index.tsx",
   mode: "development",
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: "babel-loader",
         exclude: /node_modules/
       },
       {
@@ -28,7 +28,7 @@ module.exports = {
   //stats: "errors-only",
   devServer: {
     //stats: "errors-only",
-    contentBase: path.join(__dirname, "dist"),
+    static: {directory: path.join(__dirname, "dist")},
     compress: true,
     port: 5000,
     historyApiFallback: true,
